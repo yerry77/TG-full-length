@@ -27,3 +27,6 @@ For a detailed view of the analysis workflow, please refer to the following PDF 
 
 [Download Analysis Workflow PDF](https://github.com/yerry77/TG-full-length/blob/main/analysis%20workflow.pdf)
 ## Results & Visualization
+novel isoform gtf file:
+
+novel isoform expression level(TPM):
