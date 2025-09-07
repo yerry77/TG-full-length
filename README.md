@@ -27,7 +27,7 @@ For a detailed view of the analysis workflow, please refer to the following PDF 
 
 [Download Analysis Workflow PDF](https://github.com/yerry77/TG-full-length/blob/main/analysis%20workflow.pdf)
 ## Results 
-[novel isoforms.gtf](https://github.com/yerry77/TG-full-length/blob/main/novel%20isoforms.gtf)  
+novel isoforms gtf file.[novel isoforms.gtf](https://github.com/yerry77/TG-full-length/blob/main/novel%20isoforms.gtf)  
 
 TPM values for novel isoforms calculated using RSEM. [novel isoform TPM use RSEM.tsv](https://github.com/yerry77/TG-full-length/blob/main/novel%20isoform%20TPM%20use%20RSEM.tsv)
 
