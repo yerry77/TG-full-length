@@ -1,7 +1,6 @@
-# TG-full-length
-Long-read Sequencing Uncovers Novel Alternative Splicing Networks Governing Neuroimmune in an Allergic Rhinitis Mouse model
 # TG Full-length Transcriptome Project
 This project is used to analyze trigeminal ganglion (TG) full-length transcriptome sequencing data, including data processing scripts, result visualization and analysis workflow.
-## Introduction
-PacBio HiFi full-length transcriptome sequencing
-Contains identification results of novel isoforms
+## use isoquant to generate long-read model
+Use ultra to align the raw file of long-read sequencing to the reference genome to obtain a bam file, which serves as the input file for isoquant.
+## use SQANTI3 to identify isoform and quality control
+The output file of isoquant is used as the input file of SQANTI3 to perform quality control on the transcripts of the long-read model and identify novel isoforms.
