@@ -13,7 +13,6 @@ The trigeminal ganglion (TG) plays a crucial role in allergic rhinitis (AR) by i
 
 ## Data Description
 Data Source
-
 Organism: Mus musculus
 
 Tissue: Trigeminal ganglion (TG)
