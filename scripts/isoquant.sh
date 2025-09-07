@@ -1,3 +1,5 @@
+#!/bin/bash
+# isoquant analysis pipeline for TG full-length transcriptome
 conda activate isoquant
 isoquant.py \
   --output ./results \
