@@ -77,7 +77,7 @@ gene <- unique(df_significant$gene_symbol)
 symbol2entrez <- bitr(gene, fromType = "SYMBOL", toType = "ENTREZID", OrgDb = org.Mm.eg.db)
 
 #  Step 5: GO enrichment for significant genes 
-ego <- enrichGO(
+ego1 <- enrichGO(
   gene          = symbol2entrez$ENTREZID, # ENTREZ IDs of significant DEGs
   OrgDb         = org.Mm.eg.db,           # Mouse annotation database
   keyType       = "ENTREZID",             # Type of input gene IDs
@@ -89,7 +89,7 @@ ego <- enrichGO(
 )
 
 # Filter GO terms with adjusted p-value < 1e-2
-x.data.to_plot <- ego@result[ego@result$p.adjust < 1e-2,]
+x.data.to_plot <- ego1@result[ego1@result$p.adjust < 1e-2,]
 x.data.to_plot.BP <- x.data.to_plot[x.data.to_plot$ONTOLOGY == "BP",]
 x.data.to_plot.CC <- x.data.to_plot[x.data.to_plot$ONTOLOGY == "CC",]
 x.data.to_plot.MF <- x.data.to_plot[x.data.to_plot$ONTOLOGY == "MF",]
@@ -173,7 +173,7 @@ symbol2entrez2 <- bitr(df_isoform_significant_gene, fromType = "SYMBOL",
                        toType = "ENTREZID", OrgDb = org.Mm.eg.db)
 
 # GO enrichment for DET genes with novel isoforms
-ego3 <- enrichGO(
+ego2 <- enrichGO(
   gene          = symbol2entrez2$ENTREZID, # ENTREZ IDs of significant isoform genes
   OrgDb         = org.Mm.eg.db,            # Mouse annotation database
   keyType       = "ENTREZID",              # Type of input gene IDs
@@ -185,7 +185,7 @@ ego3 <- enrichGO(
 )
 
 # Filter by adjusted p-value < 1e-2
-x.data.to_plot3 <- ego3@result[ego3@result$p.adjust < 1e-2,]
+x.data.to_plot3 <- ego2@result[ego2@result$p.adjust < 1e-2,]
 x.data.to_plot3.BP <- x.data.to_plot3[x.data.to_plot3$ONTOLOGY == "BP",]
 x.data.to_plot3.CC <- x.data.to_plot3[x.data.to_plot3$ONTOLOGY == "CC",]
 x.data.to_plot3.MF <- x.data.to_plot3[x.data.to_plot3$ONTOLOGY == "MF",]
