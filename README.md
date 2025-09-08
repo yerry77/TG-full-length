@@ -31,5 +31,5 @@ novel isoforms gtf file.[novel isoforms.gtf](https://github.com/yerry77/TG-full-
 
 TPM values for novel isoforms calculated using RSEM. [novel isoform TPM use RSEM.tsv](https://github.com/yerry77/TG-full-length/blob/main/novel%20isoform%20TPM%20use%20RSEM.tsv)
 
-Figure1 table [Figure1 data.xlsx](https://github.com/yerry77/TG-full-length/blob/main/Figure1%20data.xlsx)
+Figure1 data [Figure1 data.xlsx](https://github.com/yerry77/TG-full-length/blob/main/Figure1%20data.xlsx)
 
