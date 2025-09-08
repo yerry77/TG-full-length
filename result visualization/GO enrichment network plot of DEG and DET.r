@@ -1,6 +1,6 @@
 # Description: This script processes DEG results and DET results to generate a GO enrichment network plot.
 # DEG : Genes differentially expressed in the control group and allergic rhinitis in TG
-# DET : Genes with differentially expressed transcripts(isoforms) in the TG control group and allergic rhinitis
+# DET : Genes with differentially expressed transcripts(isoforms) in the control group and allergic rhinitis in TG
 
 # GO enrichment network plot of DEG results
 #  Load required libraries 
