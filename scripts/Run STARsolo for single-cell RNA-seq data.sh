@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script: run_STARsolo.sh
+# Script: Run STARsolo for single-cell RNA-seq data.sh
 # Description: Run STARsolo for single-cell RNA-seq BAM file to obtaining splice junction information from single-cell data
 
 # User-configurable variables
