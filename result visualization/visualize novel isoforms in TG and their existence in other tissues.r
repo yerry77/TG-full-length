@@ -1,5 +1,5 @@
 #!/usr/bin/env Rscript
-
+# Script: visualize novel isoforms in TG and their existence in other tissues.r
 # Description: Visualizes the expression levels of novel isoforms of TG in TG and mouse encode longread RNA-seq tissues using t-SNE and ComplexHeatmap.
 
 ## 1. Load Required Libraries 
