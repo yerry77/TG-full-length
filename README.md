@@ -30,3 +30,10 @@ TPM values for novel isoforms calculated using RSEM. [novel isoform TPM use RSEM
 
 Figure1 data [Figure1 data.xlsx](https://github.com/yerry77/TG-full-length/blob/main/Figure1%20data.xlsx)
 
+## scripts to process the data
+
+sample code used to process the data. Visit the folder for details. https://github.com/yerry77/TG-full-length/tree/main/scripts
+
+## scripts to visualize results
+
+sample code used to visualize results. Visit the folder for details. https://github.com/yerry77/TG-full-length/tree/main/result%20visualization
