@@ -14,7 +14,7 @@ We visualized exon-intron boundaries for known and novel isoforms and examined w
 
 ## visualize novel isoforms in TG and their existence in other tissues
 
-sample code in visualize novel isoforms in TG and their existence in other tissues.r
+sample code in https://github.com/yerry77/TG-full-length/blob/main/result%20visualization/visualize%20novel%20isoforms%20in%20TG%20and%20their%20existence%20in%20other%20tissues.r
 
 To more accurately characterize the tissue specificity of the novel isoforms discovered in TG, we quantified the expression of genes and novel isoforms using long-read RNA sequencing data 
 from nine mouse organs and cell lines from the ENCODE project and visualized the results using t-SNE and heatmaps.
