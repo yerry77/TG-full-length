@@ -1,7 +1,4 @@
-# README
-
-## Project Title
-Long-read Sequencing Uncovers Novel Alternative Splicing Networks Governing Neuroimmune in an Allergic Rhinitis Mouse model
+Long-read RNA-seq maps the isoform landscape of the trigeminal ganglion in allergic rhinitis
 
 ## Abstract
 This repository contains scripts, processed data, and analysis pipelines for investigating novel isoforms in the trigeminal ganglion using full-length transcriptome sequencing.
