@@ -1,7 +1,4 @@
-# README
-
-## Project Title
-Long-read Sequencing Uncovers Novel Alternative Splicing Networks Governing Neuroimmune in an Allergic Rhinitis Mouse model
+# Long-read RNA-seq maps the isoform landscape of the trigeminal ganglion in allergic rhinitis
 
 ## Abstract
 This repository contains scripts, processed data, and analysis pipelines for investigating novel isoforms in the trigeminal ganglion using full-length transcriptome sequencing.
@@ -26,8 +23,18 @@ Sequencing technology: PacBio HiFi (Iso-Seq, full-length transcriptome sequencin
 For a detailed view of the analysis workflow, please refer to the following PDF document:
 
 [Download Analysis Workflow PDF](https://github.com/yerry77/TG-full-length/blob/main/analysis%20workflow.pdf)
+
 ## Results 
-novel isoforms gtf file.[novel isoforms.gtf](https://github.com/yerry77/TG-full-length/blob/main/novel%20isoforms.gtf)  
+Novel isoforms gtf file. [novel isoforms.gtf](https://github.com/yerry77/TG-full-length/blob/main/novel%20isoforms.gtf)  
 
 TPM values for novel isoforms calculated using RSEM. [novel isoform TPM use RSEM.tsv](https://github.com/yerry77/TG-full-length/blob/main/novel%20isoform%20TPM%20use%20RSEM.tsv)
 
+Figure 1 data includes the classification and count of identified isoforms. [Figure1 data.xlsx](https://github.com/yerry77/TG-full-length/blob/main/Figure1%20data.xlsx)
+
+## Scripts to process the data
+
+Sample code used to process the data. Visit the folder for details. https://github.com/yerry77/TG-full-length/tree/main/scripts
+
+## Scripts to visualize results
+
+Sample code used to visualize results. Visit the folder for details. https://github.com/yerry77/TG-full-length/tree/main/result%20visualization
