@@ -22,7 +22,7 @@ Sequencing technology: PacBio HiFi (Iso-Seq, full-length transcriptome sequencin
 ## Workflow
 For a detailed view of the analysis workflow, please refer to the following PDF document:
 
-`[Download Analysis Workflow PDF]`
+`[analysis Workflow]`
 
 ## Results 
 Novel isoforms gtf file. `[novel isoforms.gtf]`
