@@ -1,0 +1,17 @@
+Categories of isoform identified		
+Isoform Category	Number Of Isoforms	Percentage(%)
+FSM	16,869	64.9
+ISM	1,576	6.1
+NIC	4,243	16.3
+NNC	2,767	10.6
+fusion	176	0.7
+antisense	140	0.5
+intergenic	125	0.5
+genic	92	0.4
+total	25,988	100
+		
+		
+Categories of gene identified		
+Genes category	Number Of Genes	
+known gene	13,011	
+novel gene	237	
