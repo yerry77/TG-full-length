@@ -25,15 +25,15 @@ For a detailed view of the analysis workflow, please refer to the following PDF 
 [Download Analysis Workflow PDF](https://github.com/yerry77/TG-full-length/blob/main/analysis%20workflow.pdf)
 
 ## Results 
-Novel isoforms gtf file. [novel isoforms.gtf](https://github.com/yerry77/TG-full-length/blob/main/novel%20isoforms.gtf)  
+Novel isoforms gtf file. `[novel isoforms.gtf]`
 
-TPM values for novel isoforms calculated using RSEM. [novel isoform TPM use RSEM.tsv](https://github.com/yerry77/TG-full-length/blob/main/novel%20isoform%20TPM%20use%20RSEM.tsv)
+TPM values for novel isoforms calculated using RSEM. `[novel isoform TPM use RSEM.tsv]`
 
-Figure 1 data includes the classification and count of identified isoforms. [Figure1 data.xlsx](https://github.com/yerry77/TG-full-length/blob/main/Figure1%20data.xlsx)
+Figure 1 data includes the classification and count of identified isoforms. 'isoform category （Figure1 data)'
 
 ## Scripts to process the data
 
-Sample code used to process the data. Visit the folder for details. https://github.com/yerry77/TG-full-length/tree/main/scripts
+Sample code used to process the data. Visit the folder for details. `scripts`
 
 ## Scripts to visualize results
 
