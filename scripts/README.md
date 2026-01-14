@@ -16,4 +16,4 @@ sample code in `SQANTI3.sh`
 
 use STARsolo to analyze splice junctions of single-cell data
 
-sample code in `Run STARsolo for single=cell RNA-seq data`
+sample code in `Run STARsolo for single=cell RNA-seq data.sh`
