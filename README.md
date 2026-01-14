@@ -29,12 +29,12 @@ Novel isoforms gtf file. `[novel isoforms.gtf]`
 
 TPM values for novel isoforms calculated using RSEM. `[novel isoform TPM use RSEM.tsv]`
 
-Figure 1 data includes the classification and count of identified isoforms. `isoform category （Figure1 data)`
+Figure 1 data includes the classification and count of identified isoforms. `[isoform category （Figure1 data)]`
 
 ## Scripts to process the data
 
-Sample code used to process the data. Visit the folder for details. `scripts`
+Sample code used to process the data. Visit the folder for details. `[scripts]`
 
 ## Scripts to visualize results
 
-Sample code used to visualize results. Visit the folder for details. `result visualization`
+Sample code used to visualize results. Visit the folder for details. `[result visualization]`
