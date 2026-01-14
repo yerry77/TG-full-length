@@ -37,4 +37,4 @@ Sample code used to process the data. Visit the folder for details. https://gith
 
 ## Scripts to visualize results
 
-Sample code used to visualize results. Visit the folder for details. https://github.com/yerry77/TG-full-length/tree/main/result%20visualization
+Sample code used to visualize results. Visit the folder for details. result visualization
