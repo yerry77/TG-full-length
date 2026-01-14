@@ -22,14 +22,14 @@ Sequencing technology: PacBio HiFi (Iso-Seq, full-length transcriptome sequencin
 ## Workflow
 For a detailed view of the analysis workflow, please refer to the following PDF document:
 
-[Download Analysis Workflow PDF](https://github.com/yerry77/TG-full-length/blob/main/analysis%20workflow.pdf)
+`[Download Analysis Workflow PDF]`
 
 ## Results 
 Novel isoforms gtf file. `[novel isoforms.gtf]`
 
 TPM values for novel isoforms calculated using RSEM. `[novel isoform TPM use RSEM.tsv]`
 
-Figure 1 data includes the classification and count of identified isoforms. 'isoform category （Figure1 data)'
+Figure 1 data includes the classification and count of identified isoforms. `isoform category （Figure1 data)`
 
 ## Scripts to process the data
 
