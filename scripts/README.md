@@ -4,7 +4,7 @@
 
 use isoquant to generate long-read model
 
-sample code in [https://github.com/yerry77/TG-full-length/blob/main/scripts/isoquant.sh]
+sample code in `https://github.com/yerry77/TG-full-length/blob/main/scripts/isoquant.sh`
 
 ## SQANTI3
 
