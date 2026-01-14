@@ -1,3 +1,5 @@
+#We report short reads' sequencing depth (average ~20.5 million mapped reads per sample) and alignment/QC metrics (unique mapping rate 93.05–94.68%, multi-mapping 3.82–4.05%, reads discarded as too short 1.33–2.86%, mismatch rate per base ~0.2%). 
+
 Sample	reads	Average read length	Unique mapped reads	Unique mapped percent	Multi mapped reads	Multi mapped percent	Unmapped too short	Unmapped too short percent	Mismatch rate	Total mapped percent
 TGOva1	21267128	299	19901181	93.58	843869	3.97	486478	2.29	0.2	97.55
 TGOva2	20688909	299	19367333	93.61	807866	3.9	480383	2.32	0.21	97.51
