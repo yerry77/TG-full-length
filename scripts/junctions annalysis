@@ -1,2 +1,121 @@
 # input: output of STARsolo
-# for one sample
+# run junctions analysis with sc-RNA data use one example as below
+# example: SRR11925964, one sample of Aubert2019 data
+
+library(Seurat)
+library(tidyr)
+library(dplyr)
+
+## ===== Share-safe path placeholders (English) =====
+PATH_ALDATA_QS    <- "<PATH_TO>/20250113_alldata_Aubert_2019.qs"
+PATH_STARSOLO_RAW <- "<PATH_TO>/STARsolo/SRR11925964/SRR11925964SJ/raw"
+PATH_JUNCTION_TSV <- "<PATH_TO>/TG_reserve_transcripts_junctions_category.tsv"
+OUT_TSV           <- "<OUTPUT_PATH>/SRR11925964_junctions_count.tsv"
+OUT_QS            <- "<OUTPUT_PATH>/Aubert_2019_TG_nonneuron_SRR11925964.qs"
+
+alldata_Aubert_2019 <- qs::qread(PATH_ALDATA_QS, nthreads = 80)
+
+# Clean barcodes (remove suffix)
+alldata_Aubert_2019$clean <- gsub("-.*", "", rownames(alldata_Aubert_2019@meta.data))
+
+# Extract barcodes (original and cleaned)
+barcodes_alldata_Aubert_2019 <- colnames(alldata_Aubert_2019)
+barcodes_alldata_Aubert_2019_clean <- gsub("-.*", "", barcodes_alldata_Aubert_2019)
+
+# Read STARsolo results and create Seurat object
+sjdata_SRR11925964 <- ReadSTARsolo(PATH_STARSOLO_RAW)
+sjdata_SRR11925964 <- CreateSeuratObject(counts = sjdata_SRR11925964, project = "SRR11925964")
+sjdata_SRR11925964 <- JoinLayers(sjdata_SRR11925964)
+head(sjdata_SRR11925964@assays$RNA$counts)
+
+# Extract barcodes from sjdata
+barcodes_sjdata_SRR11925964 <- colnames(sjdata_SRR11925964)
+
+# Create a mapping table (cleaned <-> original)
+barcode_mapping <- data.frame(
+  cleaned  = barcodes_alldata_Aubert_2019_clean,
+  original = barcodes_alldata_Aubert_2019
+)
+
+# Find intersection between cleaned barcodes and sjdata barcodes, then recover original barcodes
+barcodes_intersect_original <- barcode_mapping$original[
+  barcode_mapping$cleaned %in% barcodes_sjdata_SRR11925964
+]
+
+# Subset alldata using intersecting barcodes
+alldata_filtered <- subset(alldata_Aubert_2019, cells = barcodes_intersect_original)
+
+# Keep only cells matching a specific pattern (e.g., containing "-1_1")
+cells_to_keep <- rownames(alldata_filtered@meta.data)[grepl("-1_1", rownames(alldata_filtered@meta.data))]
+alldata_filtered_subset_seurat <- subset(alldata_filtered, cells = cells_to_keep)
+
+# Read junction category file
+junctions <- read.table(PATH_JUNCTION_TSV, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+junctions_unique <- junctions[!duplicated(junctions$junction_location), ]
+rownames(junctions_unique) <- junctions_unique$junction_location
+
+# Barcodes from filtered alldata subset (cleaned)
+barcodes_alldata_filter_subset <- alldata_filtered_subset_seurat$clean
+
+# Barcodes from sjdata
+sjdata_SRR11925964_barcodes <- colnames(sjdata_SRR11925964)
+
+# Find shared barcodes
+matching_barcodes <- intersect(barcodes_alldata_filter_subset, sjdata_SRR11925964_barcodes)
+
+# Filter sjdata by shared barcodes
+filtered_sjdata_SRR11925964 <- sjdata_SRR11925964[, matching_barcodes]
+
+# Extract expression matrix
+expr_matrix <- filtered_sjdata_SRR11925964@assays$RNA$counts
+
+# Junction locations in expression matrix
+junctions_expr_matrix <- rownames(expr_matrix)
+
+# Get junction category info for junctions present in expression matrix
+junction_category_info <- junctions_unique[junctions_unique$junction_location %in% junctions_expr_matrix, ]
+
+# Convert expression matrix to long format
+expr_matrix_long <- data.frame(
+  junction_location = rep(rownames(expr_matrix), ncol(expr_matrix)),
+  barcode           = rep(colnames(expr_matrix), each = nrow(expr_matrix)),
+  count             = as.vector(expr_matrix)
+)
+
+# Merge with junction category info
+expr_matrix_long_with_category <- merge(expr_matrix_long, junction_category_info, by = "junction_location")
+head(expr_matrix_long_with_category)
+
+# Summarize junction counts per barcode and category
+junction_category_summary <- expr_matrix_long_with_category %>%
+  group_by(junction_category, barcode) %>%
+  summarise(junction_count = sum(count), .groups = "drop")
+head(junction_category_summary)
+
+# Cell metadata
+df <- alldata_filtered_subset_seurat@meta.data
+head(df)
+
+# Convert summary to wide format (one column per junction_category)
+junction_counts_wide <- junction_category_summary %>%
+  spread(key = junction_category, value = junction_count, fill = 0)
+
+# Merge wide counts into metadata by barcode (clean)
+final_data <- merge(df, junction_counts_wide, by.x = "clean", by.y = "barcode", all.x = TRUE)
+
+# Add new features to Seurat object
+alldata_filtered_subset_seurat$known_junction_count <- final_data$known
+alldata_filtered_subset_seurat$novel_junction_count <- final_data$novel
+
+# Write output table (share-safe output path)
+write.table(
+  final_data,
+  file = OUT_TSV,
+  sep = "\t",
+  col.names = TRUE,
+  quote = FALSE
+)
+
+# Save Seurat object (share-safe output path)
+qs::qsave(alldata_filtered_subset_seurat, OUT_QS, nthreads = 80)
+
