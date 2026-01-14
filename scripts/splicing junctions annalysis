@@ -1,10 +1,10 @@
-# run junctions analysis with sc-RNA data use one example as below
+# run splicing junctions analysis with sc-RNA data use one example as below and then merge all samples results
 # example: SRR11925964, one sample of Aubert2019 data
 
+# use one example to analysis splicing junctions with sc-RNA data
 library(Seurat)
 library(tidyr)
 library(dplyr)
-
 
 PATH_ALDATA_QS    <- "<PATH_TO>/alldata_Aubert_2019.qs" # file from output of STATsolo
 PATH_STARSOLO_RAW <- "<PATH_TO>/STARsolo/SRR11925964/SRR11925964SJ/raw" # file from output of STARsolo
