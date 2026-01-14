@@ -1,4 +1,3 @@
-# input: output of STARsolo
 # run junctions analysis with sc-RNA data use one example as below
 # example: SRR11925964, one sample of Aubert2019 data
 
@@ -6,12 +5,12 @@ library(Seurat)
 library(tidyr)
 library(dplyr)
 
-## ===== Share-safe path placeholders (English) =====
-PATH_ALDATA_QS    <- "<PATH_TO>/20250113_alldata_Aubert_2019.qs"
-PATH_STARSOLO_RAW <- "<PATH_TO>/STARsolo/SRR11925964/SRR11925964SJ/raw"
-PATH_JUNCTION_TSV <- "<PATH_TO>/TG_reserve_transcripts_junctions_category.tsv"
+
+PATH_ALDATA_QS    <- "<PATH_TO>/alldata_Aubert_2019.qs" # file from output of STATsolo
+PATH_STARSOLO_RAW <- "<PATH_TO>/STARsolo/SRR11925964/SRR11925964SJ/raw" # file from output of STARsolo
+PATH_JUNCTION_TSV <- "<PATH_TO>/TG_reserve_transcripts_junctions_category.tsv" # file contains junctions info of TG
 OUT_TSV           <- "<OUTPUT_PATH>/SRR11925964_junctions_count.tsv"
-OUT_QS            <- "<OUTPUT_PATH>/Aubert_2019_TG_nonneuron_SRR11925964.qs"
+OUT_QS            <- "<OUTPUT_PATH>/Aubert_2019_TG_SRR11925964.qs" 
 
 alldata_Aubert_2019 <- qs::qread(PATH_ALDATA_QS, nthreads = 80)
 
@@ -119,3 +118,39 @@ write.table(
 # Save Seurat object (share-safe output path)
 qs::qsave(alldata_filtered_subset_seurat, OUT_QS, nthreads = 80)
 
+# merge all samples data
+file_paths <- c(
+  "<OUTPUT_PATH>/Aubert_2019_TG_SRR11925964.qs",
+  "<OUTPUT_PATH>/Aubert_2019_TG_SRR11925965.qs",
+  "<OUTPUT_PATH>/Aubert_2019_TG_SRR11925966.qs",
+  "<OUTPUT_PATH>/Aubert_2019_TG_SRR11925967.qs",
+  "<OUTPUT_PATH>/Aubert_2019_TG_SRR11925968.qs",
+  "<OUTPUT_PATH>/Aubert_2019_TG_SRR11925969.qs",
+  "<OUTPUT_PATH>/Aubert_2019_TG_SRR11925970.qs",
+  "<OUTPUT_PATH>/Aubert_2019_TG_SRR11925971.qs"
+)
+
+library(Seurat)
+library(dplyr)
+
+# Read .qs files (each file is assumed to be a Seurat object)
+data_list <- lapply(file_paths, function(file) {
+  qs::qread(file, nthreads = 80)
+})
+
+# Merge Seurat objects
+merged_data <- Reduce(function(x, y) merge(x, y), data_list)
+
+# Add derived junction metrics into metadata
+merged_data@meta.data <- merged_data@meta.data %>%
+  mutate(
+    junction_total_count    = known_junction_count + novel_junction_count,
+    novel_junction_percent  = ifelse(junction_total_count > 0, novel_junction_count / junction_total_count, NA_real_),
+    known_junction_percent  = ifelse(junction_total_count > 0, known_junction_count / junction_total_count, NA_real_)
+  )
+
+head(merged_data@meta.data)
+
+# Save merged Seurat object (share-safe output path)
+OUT_MERGED_QS <- "<OUTPUT_PATH>/Aubert_2019_TG_merged.qs"
+qs::qsave(merged_data, OUT_MERGED_QS, nthreads = 80)
